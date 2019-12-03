@@ -11,6 +11,9 @@ from arcpy.sa import *
 import os
 import rasterio 
 import numpy as np
+from time import clock
+
+timner = clock()
 
 # setting workspace and environmental parameters
 env.workspace = r'D:\Programming\Suitability_project\data_with'
@@ -109,5 +112,7 @@ PuebloCost.save('PueCost120.tif')
 Corr120 = arcpy.sa.Corridor('ColCost120.tif', 'PueCost120.tif')
 Corr120.save('Corridor120.tif')
 
+pace = clock()-timer
 
+print('Total Processing Time is : ', str(pace / 60), ' minutes.') 
     
